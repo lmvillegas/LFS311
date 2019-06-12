@@ -2,22 +2,45 @@
 BIND9
 ==================================
 
- Domain Name Services
+ **Domain Name Services**
 
 
 Indices y tablas
 ==================
 
-      * Los Domain Name System *(DNS)*
-      * Por que Utilizar Bind como Servicio de Domian Name
-      * Como construir un DNS con bind
+	* Introcucción 
+		- Proposito
+		- Alcance del Documento
+      	* Los Domain Name System *(DNS)*
+      	* Por que Utilizar Bind como Servicio de Domian Name
+      	* Como construir un DNS con bind
+
+
+1.0 Introcción:
+===============
+El sistema de nombres de dominios de internet (DNS) por sus siglas en ingles consiste en la sintaxis para especificar los nombres de las entidades en el internet de manera jerárquica, las reglas utilizadas para delegar las autoridades sobre los nombres y sistemas de implementacion, en realidad asigina nombres a direcciones IP, Los datos del DNS se mantienen en un grupo de Bases de datos Jerárquicas distribuidas.
+
+1.1 Alcance del Documento
+=========================
+*Berkeley Internet Name Domain* (BIND, es un software que permite implementar un servicio de dns confiable y sencillo con gran escalabilidad.
+
+Este Documento pretende proporcionar informacion básica sobre la instalación y el mantenimiento del servicio dns.
+
+SystemcConsortium (ISC) proporciona el software BIND Versión 9 para administradores de sistemas. 
+
+Este manual corresponde a la version 9.9
+
+1.2 Organización de este Documento
+===================================
+En este documento, *Capitulo 1 * introduce a los conceptos basicos de DNS y BIND. *Capitulo 2* Describe los recursos requeridos para ejecutar BIND en varios ambientes, Informacion del *Capitulo 3* esta *orientado a las tareas de presentacion y organizacion fundamentales para el proceso de instalación del Software BIND 9
 
 
 1.- Los Domain Name Systems *(DNS)*
 El proposito de este documento es explicar la instalacion y mantenimiendo de BIND (Berkeley Internet Name Domain) software. comenzando por revisar los fundamentos del Sistema Nombre de Dominios (DNS) segun se relacionan con *BIND*.
 
 **Que es BIND?**
------------------	
+-----------------
+	
 **Domain Name Service (DNS)**: Consuste en la sintaxis para especificar los nombres de las entidades en el internet de forma Jerarquica, las reglas utilizadas para delegar la autoridad sobre los nombres y el sistema de implementacion que en realidad asigna nombres  a direcciones de internet, los datos del DNS se mantienen en un grupo de bases de datos jerarquicas distribuidas.
 
 **Berkeley Internet Name Domain** implementa servidores de DNS para las operaciones con el sistema ating 
