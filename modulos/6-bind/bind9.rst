@@ -32,7 +32,9 @@ Este manual corresponde a la version 9.9
 
 1.2 Organización de este Documento
 ===================================
-En este documento, *Capitulo 1 * introduce a los conceptos basicos de DNS y BIND. *Capitulo 2* Describe los recursos requeridos para ejecutar BIND en varios ambientes, Informacion del *Capitulo 3* esta *orientado a las tareas de presentacion y organizacion fundamentales para el proceso de instalación del Software BIND 9
+
+En este documento, *Capitulo 1 * introduce a los conceptos basicos de DNS y BIND. *Capitulo 2* Describe los recursos requeridos para ejecutar BIND en varios ambientes, Informacion del *Capitulo 3* esta orientado a las tareas de presentacion y organizacion fundamentales para el proceso de instalación del Software BIND 9.
+
 
 
 1.- Los Domain Name Systems *(DNS)*
