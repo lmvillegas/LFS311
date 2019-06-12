@@ -1,0 +1,175 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>BIND9 &#8212; documentación de LFS311 - 0.0.1</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Email Overview" href="../9-email/email.html" />
+    <link rel="prev" title="Plan de Estudio para LFS311" href="../../introduccion.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="bind9">
+<h1>BIND9<a class="headerlink" href="#bind9" title="Enlazar permanentemente con este título">¶</a></h1>
+<blockquote>
+<div><strong>Domain Name Services</strong></div></blockquote>
+<div class="section" id="indices-y-tablas">
+<h2>Indices y tablas<a class="headerlink" href="#indices-y-tablas" title="Enlazar permanentemente con este título">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Introcucción</dt>
+<dd><ul class="first last">
+<li>Proposito</li>
+<li>Alcance del Documento</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Los Domain Name System <em>(DNS)</em></li>
+<li>Por que Utilizar Bind como Servicio de Domian Name</li>
+<li>Como construir un DNS con bind</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="introccion">
+<h2>1.0 Introcción:<a class="headerlink" href="#introccion" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El sistema de nombres de dominios de internet (DNS) por sus siglas en ingles consiste en la sintaxis para especificar los nombres de las entidades en el internet de manera jerárquica, las reglas utilizadas para delegar las autoridades sobre los nombres y sistemas de implementacion, en realidad asigina nombres a direcciones IP, Los datos del DNS se mantienen en un grupo de Bases de datos Jerárquicas distribuidas.</p>
+</div>
+<div class="section" id="alcance-del-documento">
+<h2>1.1 Alcance del Documento<a class="headerlink" href="#alcance-del-documento" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><em>Berkeley Internet Name Domain</em> (BIND, es un software que permite implementar un servicio de dns confiable y sencillo con gran escalabilidad.</p>
+<p>Este Documento pretende proporcionar informacion básica sobre la instalación y el mantenimiento del servicio dns.</p>
+<p>SystemcConsortium (ISC) proporciona el software BIND Versión 9 para administradores de sistemas.</p>
+<p>Este manual corresponde a la version 9.9</p>
+</div>
+<div class="section" id="organizacion-de-este-documento">
+<h2>1.2 Organización de este Documento<a class="headerlink" href="#organizacion-de-este-documento" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En este documento, <em>Capitulo 1 * introduce a los conceptos basicos de DNS y BIND. *Capitulo 2</em> Describe los recursos requeridos para ejecutar BIND en varios ambientes, Informacion del <em>Capitulo 3</em> esta orientado a las tareas de presentacion y organizacion fundamentales para el proceso de instalación del Software BIND 9.</p>
+<p>1.- Los Domain Name Systems <em>(DNS)</em>
+El proposito de este documento es explicar la instalacion y mantenimiendo de BIND (Berkeley Internet Name Domain) software. comenzando por revisar los fundamentos del Sistema Nombre de Dominios (DNS) segun se relacionan con <em>BIND</em>.</p>
+<div class="section" id="que-es-bind">
+<h3><strong>Que es BIND?</strong><a class="headerlink" href="#que-es-bind" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><strong>Domain Name Service (DNS)</strong>: Consuste en la sintaxis para especificar los nombres de las entidades en el internet de forma Jerarquica, las reglas utilizadas para delegar la autoridad sobre los nombres y el sistema de implementacion que en realidad asigna nombres  a direcciones de internet, los datos del DNS se mantienen en un grupo de bases de datos jerarquicas distribuidas.</p>
+<p><strong>Berkeley Internet Name Domain</strong> implementa servidores de DNS para las operaciones con el sistema ating</p>
+<p><strong>Dominios y Nombres de Dominios.</strong>
+los datos almacenados en el un domain name se identifican por <cite>nombres de dominios</cite> y son jerarquicos por lo que quiere decir que su estructura en si sola es organizada en arbol de acuerdo con los limites organizacionales o administrativos. Cada nodo denominado dominio, recibe una etiqueta. El nombre del dominio es una concatenacion de todas las etiquetas en la ruta desde el nodo hasta la raiz.
+Esto se representa de manera escrita como una cadena de etiquetas listadas de derecha a izquierda separadas por puntos. Una etiqueta debe ser unica en su dominio.</p>
+<p>Por ejemplo, un nombre para un host en su empresa <em>Ejemplo, Inc</em> puede ser ourhost.ejemplo.com, donde com es el nivel mas alto al que pertenece el host ourthost, ejemplo es un subdominio de com y ourhost es el nombre del servidor de su empresa</p>
+<p>Para fines administrativo, el espacio de nombres se divide en areas denominadas zonas, cada una de las cuales comienza en un nodo y extendiendose hacia los nodos de abajo hacia los nodos donde comienzan otras zonas, los datos de cada zona, se almancenan en un servidor de domain name, que responde las consultas sobre las zonas mediante el protocolo DNS.</p>
+<p>BIND 9 ha evolucionado para ser un sistema DNS mas flexible y con todas las funciones. Cualquiera que sea tu aplicacion, BIND9 probablemente tenga las caracteristicas requeridas. como la primera, mas antigua y comunmente implementada.</p>
+<p>Los datos asociados con cada nombre de dominio se almacenan en forma de registros de recursos (RR). Algunos de los tipos de recursos compatibles se describen en la Sesion 6.3.1.</p>
+</div>
+</div>
+<div class="section" id="que-es-dnssec">
+<h2>Que es <strong>DNSSEC</strong>?<a class="headerlink" href="#que-es-dnssec" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El <cite>Domain Named Services</cite> <strong>(DNS)</strong> fue disenado en la epoca donde el internet era un lugar amigable y de confianza, el protocolo en si proporsionaba poca proteccion contra respuestas maliciosas o falsificadas.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">LFS311</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduccion.html">Plan de Estudio para LFS311</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BIND9</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#indices-y-tablas">Indices y tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introccion">1.0 Introcción:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alcance-del-documento">1.1 Alcance del Documento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#organizacion-de-este-documento">1.2 Organización de este Documento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#que-es-dnssec">Que es <strong>DNSSEC</strong>?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9-email/email.html">Email Overview</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../../introduccion.html" title="capítulo anterior">Plan de Estudio para LFS311</a></li>
+      <li>Next: <a href="../9-email/email.html" title="próximo capítulo">Email Overview</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Luis Villegas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/modulos/6-bind/bind9.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
