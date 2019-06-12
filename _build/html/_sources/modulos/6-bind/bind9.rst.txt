@@ -16,12 +16,12 @@ Indices y tablas
       	* Como construir un DNS con bind
 
 
-1.0 Introcción:
-===============
+Introcción:
+===========
 El sistema de nombres de dominios de internet (DNS) por sus siglas en ingles consiste en la sintaxis para especificar los nombres de las entidades en el internet de manera jerárquica, las reglas utilizadas para delegar las autoridades sobre los nombres y sistemas de implementacion, en realidad asigina nombres a direcciones IP, Los datos del DNS se mantienen en un grupo de Bases de datos Jerárquicas distribuidas.
 
-1.1 Alcance del Documento
-=========================
+Alcance del Documento
+=====================
 *Berkeley Internet Name Domain* (BIND, es un software que permite implementar un servicio de dns confiable y sencillo con gran escalabilidad.
 
 Este Documento pretende proporcionar informacion básica sobre la instalación y el mantenimiento del servicio dns.
@@ -30,8 +30,8 @@ SystemcConsortium (ISC) proporciona el software BIND Versión 9 para administrad
 
 Este manual corresponde a la version 9.9
 
-1.2 Organización de este Documento
-===================================
+Organización de este Documento
+===============================
 
 En este documento, *Capitulo 1 * introduce a los conceptos basicos de DNS y BIND. *Capitulo 2* Describe los recursos requeridos para ejecutar BIND en varios ambientes, Informacion del *Capitulo 3* esta orientado a las tareas de presentacion y organizacion fundamentales para el proceso de instalación del Software BIND 9.
 
